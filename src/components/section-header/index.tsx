@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
 import { SectionHeaderWrapper } from "./styled";
 
 interface SectionHeaderInterface {

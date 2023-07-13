@@ -1,28 +1,33 @@
 import { Grid, Button, Typography, Box } from "@mui/material";
-import { IconButton } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
-
 import React, { useEffect, useState } from "react";
+
 import Banner from "../../components/Banner";
 import BannerRocket from "../../components/banner-rocket";
 import TablesPages from "../../components/tables-pages";
 import { GridContainerStyled } from "../../components/styled/grid-container";
 import { SectionHeader } from "../../components/section-header";
 import { CardCustomize } from "../../components/cards-costomize";
-import CopyrightIcon from "@mui/icons-material/Copyright";
 import { ButtonsNavigation } from "../../components/buttons-navigation";
 import { Logo } from "../../components/Logo";
 import { Possibilities } from "../../components/cards-possibilities";
+import CopyrightIcon from "@mui/icons-material/Copyright";
+
 import { TablesPagesInterface } from "../../types";
 import { CardCustomizeInterface } from "../../types";
 import { PossibilitiesInterface } from "../../types";
-// import { Users } from "../../components/users";
 
-// const getPages = async (): Promise<any> => {
-//   let res = await fetch("http://localhost:3001/pages/landing");
-//   res = await res.json();
-//   return res;
-// };
+import {
+  BoxBannerRocketWrap,
+  ButtonBannerRocket,
+  ButtonBannerRocketContainer,
+  ButtonBannerRocketWrap,
+} from "../../components/styled/box_container";
+import {
+  BodyBannerRocket,
+  HeaderBannerRocket,
+} from "../../components/styled/typography";
+import { HeaderFix } from "../../components/header-fixed";
+
 const Home = () => {
   const [cardsCustomize, setCardsCustomize] = useState<
     CardCustomizeInterface[]
@@ -36,19 +41,6 @@ const Home = () => {
     TablesPagesInterface[]
   >([]);
   const [authPages, setAuthPages] = useState<TablesPagesInterface[]>([]);
-
-  // const [landingPages, setLandingPages] = useState<PageData[]>([]);
-  // const [supportingPages, setSupportingPages] = useState<PageData[]>([]);
-  // const [authPages, setAuthPages] = useState<PageData[]>([]);
-
-  // const [comments, setComments] = useState<Comment[]>([]);
-  // const [users, setUsers] = useState<UsersInterface[]>([]);
-  // const AuthPages = () => {
-  //   return [1, 2, 3, 4, 5, 6].map((item, index) => (
-  //     // <ViewDemo key={`${item}-${index}`} />
-  //     <></>
-  //   ));
-  // };
 
   const fetchCardCustomize = async () => {
     try {
@@ -103,17 +95,6 @@ const Home = () => {
     }
   };
 
-  // const fetchUsers = async () => {
-  //   try {
-  //     const res = await fetch("http://localhost:3001/users");
-  //     const users = await res.json();
-  //     console.log("users: ", users);
-  //     setUsers(users);
-  //   } catch (error) {
-  //     console.log("users error", error);
-  //   }
-  // };
-
   useEffect(() => {}, [
     cardsCustomize,
     possibilities,
@@ -123,8 +104,6 @@ const Home = () => {
   ]);
 
   useEffect(() => {
-    // fetchUsers();
-    // fetchComments();
     fetchCardCustomize();
     fetchPossibilities();
     fetchLandingPages();
@@ -132,45 +111,9 @@ const Home = () => {
     fetchAuthPages();
   }, []);
 
-  // useEffect(() => {
-  //   getPages().then((data) => {
-  //     setLandingPages(data);
-  //     setSupportingPages(data);
-  //     setAuthPages(data);
-  //   });
-  // }, []);
-
   return (
     <Box margin={"0 auto"}>
-      <Box
-        maxWidth={1400}
-        display={"flex"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        margin={"0 auto"}
-        paddingTop={1}
-        width={"85%"}
-      >
-        <Box
-          display={"flex"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
-        >
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Box height={32}>
-            <Logo />
-          </Box>
-        </Box>
-        <ButtonsNavigation />
-      </Box>
+      <HeaderFix />
 
       <Box
         margin={"0 auto"}
@@ -186,7 +129,7 @@ const Home = () => {
           marginBottom={"20px"}
           maxWidth={1400}
         >
-          <Box
+          <BoxBannerRocketWrap
             maxWidth={"1400px"}
             display={"flex"}
             paddingY={10}
@@ -195,7 +138,7 @@ const Home = () => {
             marginTop={"-37px"}
           >
             <Box width={"50%"} paddingTop={10}>
-              <Typography
+              <HeaderBannerRocket
                 variant="h1"
                 textAlign="left"
                 fontSize={"3.75rem"}
@@ -205,8 +148,8 @@ const Home = () => {
                 width={"75%"}
               >
                 Turn your ideas into a ,<span>success</span>.
-              </Typography>
-              <Typography
+              </HeaderBannerRocket>
+              <BodyBannerRocket
                 variant="body1"
                 textAlign="left"
                 color={"#757575"}
@@ -215,24 +158,27 @@ const Home = () => {
               >
                 Webbee will make your product look modern and professional while
                 saving you precious time.
-              </Typography>
-              <Box display={"flex"} alignItems={"center"}>
-                <Box marginRight={4}>
-                  <Button variant="contained" color={"success"}>
+              </BodyBannerRocket>
+              <ButtonBannerRocketContainer
+                display={"flex"}
+                alignItems={"center"}
+              >
+                <ButtonBannerRocketWrap marginRight={4}>
+                  <ButtonBannerRocket variant="contained" color={"success"}>
                     Purchase now
-                  </Button>
-                </Box>
-                <Box>
-                  <Button variant="outlined" color={"success"}>
+                  </ButtonBannerRocket>
+                </ButtonBannerRocketWrap>
+                <ButtonBannerRocketWrap>
+                  <ButtonBannerRocket variant="outlined" color={"success"}>
                     View documentation
-                  </Button>
-                </Box>
-              </Box>
+                  </ButtonBannerRocket>
+                </ButtonBannerRocketWrap>
+              </ButtonBannerRocketContainer>
             </Box>
             <Box width="50%">
               <BannerRocket />
             </Box>
-          </Box>
+          </BoxBannerRocketWrap>
         </Box>
       </Box>
       <Box width={"100%"} display={"flex"} justifyContent={"center"}>
@@ -287,7 +233,7 @@ const Home = () => {
         justifyContent={"center"}
         sx={{ background: "rgb(247, 249, 252)" }}
       >
-        <Box maxWidth={"1400px"} width={"85%"}>
+        <Box maxWidth={"1400px"} width={"85%"} paddingBottom={10}>
           <SectionHeader
             header="DEMO PAGES"
             title=" Webbee in action"
@@ -398,4 +344,5 @@ const Home = () => {
     </Box>
   );
 };
+
 export default Home;
